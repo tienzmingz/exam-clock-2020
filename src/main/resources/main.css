@@ -4,13 +4,13 @@
 }
 
 .clock-element {
-    -fx-stroke: derive(-fx-foreground, 20%);
-    -fx-fill: derive(-fx-foreground, 10%);
+    -fx-stroke: #000000
+    -fx-fill: #000000
 }
 
 .clock-element-empty {
     -fx-stroke: derive(-fx-foreground, 20%);
-    -fx-fill: derive(-fx-background, 20%);
+    -fx-fill: #e1ddcc
 }
 
 .exam-holder.started {
