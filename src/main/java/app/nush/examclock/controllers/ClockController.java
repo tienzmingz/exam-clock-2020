@@ -63,7 +63,7 @@ public class ClockController {
         calendar = Calendar.getInstance();
         digitalClock = new DigitalClock();
         digitalClock.setLayoutX(-digitalClock.width / 2);
-        digitalClock.setLayoutY(60);
+        digitalClock.setLayoutY(180);
         parent.getChildren().add(1, digitalClock);
         createClockLabels();
 
@@ -114,21 +114,21 @@ public class ClockController {
                 text.setText(String.valueOf((i == 0 ? 60 : i) / 5));
                 text.getStyleClass().add("clock-element");
                 text.setFont(Font.font(i % 15 == 0 ? 24 : 16));
-                text.setX(155 * Math.sin(i * Math.PI / 30));
-                text.setY(-155 * Math.cos(i * Math.PI / 30));
+                text.setX(155 * 0.8 * Math.sin(i * Math.PI / 30));
+                text.setY(-155 * 0.8 * Math.cos(i * Math.PI / 30));
                 text.setX(text.getX() - text.getLayoutBounds().getWidth() / 2);
                 text.setY(text.getY() + text.getLayoutBounds().getHeight() / 4);
                 clockFace.getChildren().add(text);
             }
             Line line = new Line();
             line.getStyleClass().add("clock-element");
-            line.setEndX(200 * Math.sin(i * Math.PI / 30));
-            line.setEndY(200 * Math.cos(i * Math.PI / 30));
+            line.setEndX(160 * Math.sin(i * Math.PI / 30));
+            line.setEndY(160 * Math.cos(i * Math.PI / 30));
             line.setStrokeWidth(i % 15 == 0 ? 3 : i % 5 == 0 ? 2 : 1);
 
             double start = i % 15 == 0 ? 175.0 : i % 5 == 0 ? 185.0 : 190.0;
-            line.setStartX(start * Math.sin(i * Math.PI / 30));
-            line.setStartY(start * Math.cos(i * Math.PI / 30));
+            line.setStartX(0.8*start * Math.sin(i * Math.PI / 30));
+            line.setStartY(0.8*start * Math.cos(i * Math.PI / 30));
             clockFace.getChildren().add(line);
         }
     }
