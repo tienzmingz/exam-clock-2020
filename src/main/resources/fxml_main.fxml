@@ -1,127 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.input.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
-            prefWidth="740.0" xmlns="http://javafx.com/javafx/8.0.171"
-            fx:controller="app.nush.examclock.controllers.MainController">
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.nush.examclock.controllers.MainController">
     <center>
         <SplitPane fx:id="root" dividerPositions="0.5">
             <StackPane fx:id="clockRoot">
                 <Group fx:id="clockPane">
                     <Group fx:id="clockFace">
-                        <Circle radius="200.0" strokeType="OUTSIDE" strokeWidth="2"
-                                styleClass="clock-element-empty"/>
+                        <Circle radius="160.0" strokeType="OUTSIDE" strokeWidth="2" styleClass="clock-element-empty" />
                     </Group>
                     <Group fx:id="hourGroup">
-                        <Circle fill="TRANSPARENT" opacity="0.0" radius="200.0" smooth="false" stroke="TRANSPARENT"
-                                strokeType="INSIDE"/>
-                        <Polygon fx:id="hourHand" points="-6,12, 0,15, 6,12, 4,-100, 0,-105, -4,-100"
-                                 strokeType="INSIDE" styleClass="clock-element"/>
+                        <Circle fill="TRANSPARENT" opacity="0.0" radius="160.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <Polygon fx:id="hourHand" points="-6,12, 0,15, 6,12, 4,-100, 0,-105, -4,-100" scaleX="0.75" scaleY="0.75" scaleZ="0.75" strokeType="INSIDE" styleClass="clock-element" />
                     </Group>
                     <Group fx:id="minuteGroup">
-                        <Circle fill="TRANSPARENT" opacity="0.0" radius="200.0" smooth="false" stroke="TRANSPARENT"
-                                strokeType="INSIDE" strokeWidth="0.0"/>
-                        <Polygon fx:id="minuteHand" points="-3.3,20, 0,23, 3.3,20, 2,-150, 0,-155, -2,-150"
-                                 strokeType="INSIDE" styleClass="clock-element"/>
+                        <Circle fill="TRANSPARENT" opacity="0.0" radius="160.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Polygon fx:id="minuteHand" points="-3.3,20, 0,23, 3.3,20, 2,-150, 0,-155, -2,-150" scaleX="0.75" scaleY="0.75" scaleZ="0.75" strokeType="INSIDE" styleClass="clock-element" />
                     </Group>
                     <Group fx:id="secondGroup">
-                        <Circle fill="TRANSPARENT" opacity="0.0" radius="200.0" smooth="false" stroke="TRANSPARENT"
-                                strokeType="INSIDE" strokeWidth="0.0"/>
-                        <Polygon fx:id="secondHand" points="-2,30, 2,30, 1,-170, 0,-175, -1,-170" strokeType="INSIDE"
-                                 styleClass="clock-element"/>
+                        <Circle fill="TRANSPARENT" opacity="0.0" radius="160.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Polygon fx:id="secondHand" points="-2,30, 2,30, 1,-170, 0,-175, -1,-170" scaleX="0.75" scaleY="0.75" scaleZ="0.75" strokeType="INSIDE" styleClass="clock-element" />
                     </Group>
-                    <Circle radius="5.0" strokeType="INSIDE" styleClass="clock-element-empty"/>
+                    <Circle radius="4.0" strokeType="INSIDE" styleClass="clock-element-empty" />
                 </Group>
-                <HBox fx:id="toiletIconParent" alignment="BOTTOM_RIGHT" opacity="0.8" spacing="4.0">
-                    <ImageView fx:id="toiletMale" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
-                               preserveRatio="true">
-                        <Image url="@toilet_male.png"/>
-                    </ImageView>
-                    <ImageView fx:id="toiletFemale" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
-                               preserveRatio="true">
-                        <Image url="@toilet_female.png"/>
-                    </ImageView>
-                </HBox>
+                <Label fx:id="selectedNameLabel" text="Exam Title">
+                    <StackPane.margin>
+                        <Insets bottom="620.0" />
+                    </StackPane.margin>
+                    <font>
+                        <Font name="Arial Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="selectedFifteenLabel" text="15 minutes remaining!" textFill="#f24141" visible="false">
+                    <font>
+                        <Font name="Arial Bold" size="24.0" />
+                    </font>
+                    <StackPane.margin>
+                        <Insets bottom="550.0" />
+                    </StackPane.margin>
+                </Label>
+                <Button mnemonicParsing="false" style="-fx-shape: &quot;M150 0 L75 200 L225 200 Z&quot;;">
+                    <StackPane.margin>
+                        <Insets bottom="550.0" />
+                    </StackPane.margin>
+                </Button>
+                <Button mnemonicParsing="false" style="-fx-shape: &quot;M150 0 L75 200 L225 200 Z&quot;; -fx-rotate: 180;">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <StackPane.margin>
+                        <Insets top="550.0" />
+                    </StackPane.margin>
+                </Button>
             </StackPane>
-            <VBox fx:id="rightPane" alignment="TOP_RIGHT" minHeight="0.0" minWidth="0.0">
-                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                    <VBox fx:id="examList"/>
+            <VBox fx:id="rightPane" alignment="TOP_CENTER" minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="503.0" style="-fx-background-color: black;">
+            <Label text="Ongoing Exams" textFill="#f24141">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="450.0" prefWidth="503.0" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="examList" />
                 </ScrollPane>
-                <HBox>
-                    <Pane HBox.hgrow="ALWAYS"/>
-                    <Button onAction="#addExamClicked">Add</Button>
+                <HBox alignment="CENTER">
+               <children>
+                  <Label text="Availability" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+                </HBox>
+                <HBox fx:id="toiletIconParent" alignment="CENTER" prefHeight="109.0" prefWidth="503.0" spacing="4.0">
+               <Label text="ALL IN" textFill="#2d830e">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+                    <ImageView fx:id="toiletMale" fitHeight="130.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@toilet_male.png" />
+                  <HBox.margin>
+                     <Insets left="60.0" right="60.0" />
+                  </HBox.margin>
+                    </ImageView>
+                    <ImageView fx:id="toiletFemale" fitHeight="130.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@toilet_female.png" />
+                    </ImageView>
                 </HBox>
             </VBox>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
         </SplitPane>
     </center>
-    <top>
-        <MenuBar BorderPane.alignment="CENTER" useSystemMenuBar="true">
-            <Menu mnemonicParsing="false" text="File">
-                <MenuItem onAction="#reset" text="New">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN"/>
-                    </accelerator>
-                </MenuItem>
-                <SeparatorMenuItem mnemonicParsing="false"/>
-                <MenuItem mnemonicParsing="false" onAction="#saveExams" text="Save">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN"/>
-                    </accelerator>
-                </MenuItem>
-                <MenuItem mnemonicParsing="false" onAction="#loadExams" text="Revert to saved"/>
-                <SeparatorMenuItem mnemonicParsing="false"/>
-                <MenuItem mnemonicParsing="false" onAction="#importExams" text="Import..."/>
-                <MenuItem mnemonicParsing="false" onAction="#exportExams" text="Export..."/>
-                <SeparatorMenuItem mnemonicParsing="false"/>
-                <MenuItem mnemonicParsing="false" onAction="#showSettings" text="Settings">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="E" control="UP" meta="UP" shift="UP" shortcut="DOWN"/>
-                    </accelerator>
-                </MenuItem>
-                <MenuItem mnemonicParsing="false" onAction="#showConnection" text="Connection">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="C" control="UP" meta="UP" shift="UP" shortcut="DOWN"/>
-                    </accelerator>
-                </MenuItem>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Exam">
-                <MenuItem mnemonicParsing="false" onAction="#addExamClicked" text="Add">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="A" control="UP" meta="UP" shift="UP" shortcut="DOWN"/>
-                    </accelerator>
-                </MenuItem>
-                <MenuItem mnemonicParsing="false" onAction="#editExamClicked" text="Edit"/>
-                <MenuItem mnemonicParsing="false" onAction="#deleteExamClicked" text="Delete">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="BACK_SPACE" control="UP" meta="UP" shift="UP"
-                                            shortcut="DOWN"/>
-                    </accelerator>
-                </MenuItem>
-                <SeparatorMenuItem mnemonicParsing="false"/>
-                <MenuItem mnemonicParsing="false" onAction="#startSelectedExams" text="Start Selected"/>
-                <MenuItem mnemonicParsing="false" onAction="#startAllExams" text="Start All">
-                    <accelerator>
-                        <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN"/>
-                    </accelerator>
-                </MenuItem>
-                <SeparatorMenuItem mnemonicParsing="false"/>
-                <MenuItem mnemonicParsing="false" onAction="#stopSelectedExams" text="Stop Selected"/>
-                <MenuItem mnemonicParsing="false" onAction="#stopAllExams" text="Stop All">
-                    <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="DOWN" shortcut="UP"/>
-                    </accelerator>
-                </MenuItem>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-                <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
-                <MenuItem mnemonicParsing="false" onAction="#help" text="How to use?"/>
-            </Menu>
-        </MenuBar>
-    </top>
+   <top>
+      <HBox prefHeight="0.0" prefWidth="1014.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="54.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@AppVenture-logo/logo_app.png" />
+               </image>
+            </ImageView>
+              <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="19.0" prefWidth="600.0" style="-fx-background-color: black;" stylesheets="@file_menu_styling.css" useSystemMenuBar="true" HBox.hgrow="ALWAYS">
+                  <Menu mnemonicParsing="false" style="-fx-font-weight: bolder; -fx-font-size: 20px; -fx-padding: 5 70 5 70;" text="File">
+                      <MenuItem onAction="#reset" text="New">
+                          <accelerator>
+                              <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                          </accelerator>
+                      </MenuItem>
+                      <SeparatorMenuItem mnemonicParsing="false" />
+                      <MenuItem mnemonicParsing="false" onAction="#saveExams" text="Save">
+                          <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                          </accelerator>
+                      </MenuItem>
+                      <MenuItem mnemonicParsing="false" onAction="#loadExams" text="Revert to saved" />
+                      <SeparatorMenuItem mnemonicParsing="false" />
+                      <MenuItem mnemonicParsing="false" onAction="#importExams" text="Import..." />
+                      <MenuItem mnemonicParsing="false" onAction="#exportExams" text="Export..." />
+                      <SeparatorMenuItem mnemonicParsing="false" />
+                      <MenuItem mnemonicParsing="false" onAction="#showSettings" text="Settings">
+                          <accelerator>
+                              <KeyCodeCombination alt="UP" code="E" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                          </accelerator>
+                      </MenuItem>
+                      <MenuItem mnemonicParsing="false" onAction="#showConnection" text="Connection">
+                          <accelerator>
+                              <KeyCodeCombination alt="UP" code="C" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                          </accelerator>
+                      </MenuItem>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-size: 20px; -fx-font-weight: bolder; -fx-padding: 5 70 5 70;" text="Exam">
+                      <MenuItem mnemonicParsing="false" onAction="#addExamClicked" text="Add">
+                          <accelerator>
+                              <KeyCodeCombination alt="UP" code="A" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                          </accelerator>
+                      </MenuItem>
+                      <MenuItem mnemonicParsing="false" onAction="#editExamClicked" text="Edit" />
+                      <MenuItem mnemonicParsing="false" onAction="#deleteExamClicked" text="Delete">
+                          <accelerator>
+                              <KeyCodeCombination alt="UP" code="BACK_SPACE" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                          </accelerator>
+                      </MenuItem>
+                      <SeparatorMenuItem mnemonicParsing="false" />
+                      <MenuItem mnemonicParsing="false" onAction="#startSelectedExams" text="Start Selected" />
+                      <MenuItem mnemonicParsing="false" onAction="#startAllExams" text="Start All">
+                          <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
+                          </accelerator>
+                      </MenuItem>
+                      <SeparatorMenuItem mnemonicParsing="false" />
+                      <MenuItem mnemonicParsing="false" onAction="#stopSelectedExams" text="Stop Selected" />
+                      <MenuItem mnemonicParsing="false" onAction="#stopAllExams" text="Stop All">
+                          <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                          </accelerator>
+                      </MenuItem>
+                  </Menu>
+                  <Menu mnemonicParsing="false" style="-fx-font-size: 20px; -fx-font-weight: bolder; -fx-padding: 5 70 5 70;" text="Help">
+                      <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+                      <MenuItem mnemonicParsing="false" onAction="#help" text="How to use?" />
+                  </Menu>
+              </MenuBar>
+                 <Button alignment="BOTTOM_CENTER" onAction="#addExamClicked" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #960000;" text="NEW EXAM" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
