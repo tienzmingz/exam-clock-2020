@@ -28,11 +28,11 @@ public class DigitalClock extends Parent {
     /**
      * digit fill color
      */
-    public static final SimpleObjectProperty<Color> digitalClockDigitColorProperty = new SimpleObjectProperty<>(Color.DODGERBLUE.brighter());
+    public static final SimpleObjectProperty<Color> digitalClockDigitColorProperty = new SimpleObjectProperty<>(Color.RED.brighter());
     /**
      * digit border color, useful for digit with same color as background
      */
-    public static final SimpleObjectProperty<Color> digitalClockDigitBorderColorProperty = new SimpleObjectProperty<>(Color.DODGERBLUE.brighter());
+    public static final SimpleObjectProperty<Color> digitalClockDigitBorderColorProperty = new SimpleObjectProperty<>(Color.RED.brighter());
     /**
      * digit border width
      */
@@ -40,7 +40,7 @@ public class DigitalClock extends Parent {
     /**
      * background color of the digital clock
      */
-    public static final SimpleObjectProperty<Color> digitalClockBackgroundColorProperty = new SimpleObjectProperty<>(new Color(0, 0, 0, .5));
+    public static final SimpleObjectProperty<Color> digitalClockBackgroundColorProperty = new SimpleObjectProperty<>(new Color(0.016, 0.016, 0.016, 1));
     /**
      * The Width.
      */
@@ -58,7 +58,9 @@ public class DigitalClock extends Parent {
         digits = new Digit[7];
         width = 6 * Digit.DIGIT_SPACE;
         height = Digit.DIGIT_HEIGHT;
-        Rectangle bg = new Rectangle(width, height + 10);
+        Rectangle bg = new Rectangle(width, height+10);
+        bg.setArcHeight(20);
+        bg.setArcWidth(20);
         bg.setLayoutY(-5);
         getChildren().add(bg);
         bg.visibleProperty().bind(digitalBackgroundProperty);
@@ -127,11 +129,11 @@ public class DigitalClock extends Parent {
         /**
          * The constant DIGIT_WIDTH.
          */
-        public static double DIGIT_WIDTH = 0.675 * DIGIT_SPACE;
+        public static double DIGIT_WIDTH =  0.675 * DIGIT_SPACE;
         /**
          * The constant DIGIT_HEIGHT.
          */
-        public static double DIGIT_HEIGHT = 1.35 * DIGIT_SPACE;
+        public static double DIGIT_HEIGHT =  1.2 * DIGIT_SPACE;
         private final Polygon[] polygons = new Polygon[]{
                 new Polygon(2 / 54d * DIGIT_WIDTH, 0,
                         0.9629629629629629 * DIGIT_WIDTH, 0,
